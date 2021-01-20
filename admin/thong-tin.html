@@ -110,8 +110,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg"
-                                                                           alt="user" class="profile-pic mr-2">Markarn
-                            Doe</a>
+                                                                           alt="user" class="profile-pic mr-2">Admin</a>
                     </li>
                 </ul>
             </div>
@@ -149,10 +148,9 @@
                 <div class="col-lg-4 col-xlg-3 col-md-5">
                     <div class="card">
                         <div class="card-body profile-card">
-                            <center class="m-t-30"> <img src="assets/images/users/5.jpg"
-                                                         class="rounded-circle" width="150" />
-                                <h4 class="card-title m-t-10">Hanna Gover</h4>
-                                <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                            <center class="m-t-30"> <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+                                                         class="rounded-circle" width="150" id="avatarNguoiDung"/>
+                                <h4 class="card-title m-t-10" id="idTenNguoiDung"></h4>
 
                             </center>
                         </div>
@@ -387,6 +385,7 @@
 <!--Custom JavaScript -->
 <script src="js/custom.js"></script>
 <script src="js/main.js"></script>
+<script src="../js/file_hander.js"></script>
 <script type="text/javascript">
 
     function api_chitietNguoiDungAdmin(id){
@@ -400,6 +399,8 @@
                 alert(result.message);
             }else{
                 // Thông tin người dùng
+                $('#avatarNguoiDung').attr('src', get_file(result.data.avatar));
+                $('#idTenNguoiDung').html(result.data.name);
                 $('#tenNguoiDung').val(result.data.name);
                 $('#emailNguoiDung').val(result.data.email);
                 $('#phoneNguoiDung').val(result.data.phone);
