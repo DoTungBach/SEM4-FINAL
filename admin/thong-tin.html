@@ -230,13 +230,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Thông tin</h4>
-                                    <select class="custom-select col-md-2 ml-auto">
+                                    <!-- <select class="custom-select col-md-2 ml-auto">
                                         <option selected="">Tháng 1</option>
                                         <option value="1">Tháng 2</option>
-                                    </select>
+                                    </select> -->
+                                    <input type="date" id="idStartDateDoanhThu">
+                                    <input type="date" id="idEndDateDoanhThu">
                                     <div class="text-center">
                                         <h4 class="card-title">Doanh thu tháng</h4>
-                                        <h2 class="font-light m-b-0">950.000đ</h2>
+                                        <h2 class="font-light m-b-0" id="idDoanhThuThang">0đ</h2>
                                     </div>
 
                                 </div>
@@ -442,7 +444,33 @@
         })
     }
 
-    api_chitietNguoiDungAdmin(getUrlParameter("id"))
+    api_chitietNguoiDungAdmin(getUrlParameter("id"));
+
+    lay_doanh_thu();
+
+    $('#idStartDateDoanhThu').on('change', function() {
+        lay_doanh_thu();
+    });
+    $('#idEndDateDoanhThu').on('change', function() {
+        lay_doanh_thu();
+    });
+
+    function lay_doanh_thu(){
+        $.get({
+            url:"https://sem4-finalpj-api.herokuapp.com/admin/transaction/timefilter",
+            data: {
+                id: getUrlParameter("id"),
+                start: $('#idStartDateDoanhThu').val(),
+                end: $('#idEndDateDoanhThu').val()
+            }
+        }).done(result => {
+            var doanhthu = 0;
+            $.each(result.data, function(i, v) {
+                doanhthu += v.song.price;
+            })
+            $('#idDoanhThuThang').html('$'+(doanhthu*0.95).toFixed(2));
+        });
+    }
 
 </script>
 </body>

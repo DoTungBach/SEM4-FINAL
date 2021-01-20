@@ -156,13 +156,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Thông tin</h4>
-                                <select class="custom-select col-md-2 ml-auto">
-                                    <option selected="">Tháng 1</option>
-                                    <option value="1">Tháng 2</option>
-                                </select>
+                                <!-- <select class="custom-select col-md-2 ml-auto" id="idSelectThangDoanhThu">
+                                    <option selected value="01">Tháng 1</option>
+                                    <option value="02">Tháng 2</option>
+                                </select> -->
+                                <input type="date" id="idStartDateDoanhThu">
+                                <input type="date" id="idEndDateDoanhThu">
                                 <div class="text-center">
                                     <h4 class="card-title">Doanh thu tháng</h4>
-                                    <h2 class="font-light m-b-0">950.000đ</h2>
+                                    <h2 class="font-light m-b-0" id="idDoanhThuThang">0đ</h2>
                                 </div>
 
                             </div>
@@ -301,6 +303,32 @@
     <script src="assets/plugins/flot/jquery.flot.js"></script>
     <script src="assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="js/pages/dashboards/dashboard1.js"></script>
+    <script type="text/javascript">
+        lay_doanh_thu();
+        $('#idStartDateDoanhThu').on('change', function() {
+            lay_doanh_thu();
+        });
+        $('#idEndDateDoanhThu').on('change', function() {
+            lay_doanh_thu();
+        });
+
+        function lay_doanh_thu(){
+            $.get({
+                url:"https://sem4-finalpj-api.herokuapp.com/admin/transaction/timefilter",
+                data: {
+                    start: $('#idStartDateDoanhThu').val(),
+                    end: $('#idEndDateDoanhThu').val()
+                    // end: '28' + thang + nam
+                }
+            }).done(result => {
+                var doanhthu = 0;
+                $.each(result.data, function(i, v) {
+                    doanhthu += v.song.price;
+                })
+                $('#idDoanhThuThang').html('$'+(doanhthu*0.05).toFixed(2));
+            });
+        }
+    </script>
 </body>
 
 </html>
