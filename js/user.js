@@ -18,7 +18,7 @@ function loadDuLieuNguoiDung() {
     api_UserDetail(sessionStorage.getItem("user_id")).done(function(result){
         $('#imgProfile').attr('src', get_file(result.data.avatar));
         $('#hovaten').html(result.data.name);
-        $('#ngaysinh').html(result.data.dob);
+        $('#ngaysinh').html(result.data.dob.slice(0,10));
         $('#sodienthoai').html(result.data.phone);
         $('#email').html(result.data.email);
         $('#socmt').html(result.data.identification);
