@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	height: 100%;
+	width: 100%;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+ul,ol {
+  margin: 0; 
+}
+ul li,
+ol li{
+  list-style: none; 
+}
+button:focus{
+	outline: none;
+}
+.jp-play {
+	position: relative;
+	height: 50px;
+	width: 50px;
+	background: transparent;
+	border: 2px solid #e1e1e1;
+	border-radius: 50%;
+}
+
+.jp-play:after {
+	position: absolute;
+	display: block;
+	left: 17px;
+	top: 12px;
+	width: 16px;
+	height: 20px;
+	background: url(../img/play-default.png);
+	content: "";
+}
+
+.jp-state-playing .jp-play {
+	background: #5c00ce !important;
+	border-color: #5c00ce !important;
+}
+
+.jp-state-playing .jp-play:after {
+	background: url(../img/pause.png) !important;
+	left: 15px;
+	top: 12px;
+}
+
+.jp-audio .jp-play:focus {
+	background: #5c00ce !important;
+	border-color: #5c00ce !important;
+}
+
+.jp-audio .jp-play:focus:after {
+	background: url(../img/play.png);
+}
+.jp-seek-bar{
+	width: 100% !important;
+}
+.jp-seek-bar>div {
+	height: 5px;
+	background: #e1e1e1;
+	cursor: pointer;
+	width: 100%;
+}
+
+.player_bars {
+	width: 400px;
+	display: table;
+	padding-left: 50px;
+	position: relative;
+	padding-top: 25px;
+	float: left;
+	margin-right: 30px;
+}
+
+.jp-play-bar {
+	position: relative;
+	height: 100%;
+	background: #5c00ce;
+	overflow: visible !important;
+}
+
+.jp-current-time {
+	font-size: 15px;
+	color: #ffffff;
+	position: absolute;
+	left: -50px;
+	top: -9px;
+}
+
+.jp-duration {
+	font-size: 15px;
+	color: #ffffff;
+	position: absolute;
+	right: -46px;
+	top: 16px;
+}
+
+.player_controls_box {
+	width: 50px;
+	float: left;
+	margin-right: 20px;
+}
+
+.jp-mute {
+	font-size: 18px;
+	border: none;
+	background: none;
+	color: #ffffff;
+	position: absolute;
+	left: 0;
+	top: 13px;
+}
+
+.jp-volume-bar {
+	height: 5px;
+	width: 70px;
+	background: #e1e1e1;
+	cursor: pointer;
+}
+
+.jp-volume-bar-value {
+	background: #5c00ce;
+	height: 100%;
+}
+
+.jp-volume-controls {
+	position: relative;
+	width: 95px;
+	left: 35px;
+	float: left;
+	padding-left: 25px;
+	padding-top: 25px;
+}
+.single_player_container {
+	overflow: hidden;
+	margin-bottom: 40px;
+}
+
+.single_player_container:last-child {
+	margin-bottom: 0;
+}
+
+.single_player_container h4 {
+	font-size: 26px;
+	color: #111111;
+	font-weight: 700;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
