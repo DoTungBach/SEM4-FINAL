@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="css/nhac.css">
 </head>
 <body>
@@ -229,6 +230,7 @@
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
     <script src="js/file_hander.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AUV5uLIhYItXSWADnSGPLvtvctgrX2JEUw_RfsyjfkpiEGsBCfBXw6PIXe1M-HysNBq2-ckt0GfAOVtG&currency=USD"></script>
 
@@ -304,7 +306,7 @@
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
                         // Show a success message to the buyer
-                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                        // alert('Transaction completed by ' + details.payer.name.given_name + '!');
                         console.log(details);
                         //goi api luu Transaction vao db
                         //...

@@ -217,7 +217,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <!-- Bootstrap js -->
@@ -264,7 +263,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 }) 
             }            
     	}
-        
+
         function tinhtien(){
             $('#tiencong').html("Số tiền bạn nhận được sau khi thanh toán: $" + ($('#giatien').val()*0.95).toFixed(2));
             if($('#giatien').val() == '') { $('#tiencong').empty(); }

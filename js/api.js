@@ -133,8 +133,12 @@ function api_themTransactionThanhToanThanhCong(song_id, customer_id) {
 		dataType: 'json',
 		data: JSON.stringify({
 		    payment: 'paypal',
-		    songId: song_id,
-		    customerId: customer_id
+		    song:{
+		    	id: song_id
+		    },
+		    customer: {
+		    	id: customer_id
+		    }
 		})
 	})
 }
