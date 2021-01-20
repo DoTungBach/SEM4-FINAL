@@ -115,16 +115,6 @@ function api_layNhacTheoId(id) {
 // 		data:{ id: id }
 // 	})
 // }
-
-function api_updateNhacDaThanhToan(id) {
-	return $.ajax({
-		// url:'https://api-finalpj.herokuapp.com/v1/song/pay',
-		url:'https://sem4-finalpj-api.herokuapp.com/song/pay',
-		data:{ id: id },
-		method:'put'
-	})
-}
-
 function api_themTransactionThanhToanThanhCong(song_id, customer_id) {
 	return $.post({
 		// url:'https://api-finalpj.herokuapp.com/v1/transaction',
@@ -132,7 +122,7 @@ function api_themTransactionThanhToanThanhCong(song_id, customer_id) {
 		contentType: 'application/json',
 		dataType: 'json',
 		data: JSON.stringify({
-		    payment: 'paypal',
+		    payment: 'Paypal',
 		    song:{
 		    	id: song_id
 		    },
@@ -173,7 +163,7 @@ function api_top20User(){
 function api_topBeat(){
 	return $.ajax({
 		// url:'https://api-finalpj.herokuapp.com/v1/song/top-10'
-		url:'https://sem4-finalpj-api.herokuapp.com/song/top-10'
+		url:'https://sem4-finalpj-api.herokuapp.com/song/top-6'
 	})
 }
 

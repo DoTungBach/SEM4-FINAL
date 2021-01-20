@@ -258,7 +258,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     if (result.data == null) {
                         toastr.error(result.message);
                     }else{
-                        window.location.assign('user.html');
+                        if(!alert(result.message)) { window.location.assign('user.html'); }
                     }
                 }) 
             }            

@@ -45,11 +45,11 @@ function loadDuLieuNguoiDung() {
         $.each(result.data.transactions, function(i, v) {  
             html1 += '<tr>';
             html1 += '<td>' + (i + 1) + '</td>';
-            html1 += '<td><a href="nhac.html?id='+v.song_id+'">' + v.song_name + '</a></td>';
-            html1 += '<td>$' + v.song_price + '</td>';
-            html1 += '<td>' + v.create_at + '</td>';
+            html1 += '<td><a href="nhac.html?id='+v.song.id+'">' + v.song.name + '</a></td>';
+            html1 += '<td>$' + v.song.price + '</td>';
+            html1 += '<td>' + v.song.createAt + '</td>';
             html1 += '<td>' + v.payment + '</td>';
-            html1 += '<td><a href="' + get_link(v.song_main) +'"><i class="fas fa-download"></i></a></td>';
+            html1 += '<td><a href="' + get_file(v.song.main) +'"><i class="fas fa-download"></i></a></td>';
             html1 += '</tr>';
         });
         $('#lichsumh').html(html1);

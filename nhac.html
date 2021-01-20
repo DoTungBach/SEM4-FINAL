@@ -129,7 +129,6 @@
                         </div> -->
                         <div class="baihat-action">
                             <button type="button" id="btnSongPrice" onclick="checkUserAcc()" class="btn btn-info btn-lg"><i class="fas fa-shopping-cart"></i>&ensp; <span id="songPrice"></span></button>
-                            
                             <button class="btn-group btn-like">
                                 <i class="far fa-heart"></i>
                                 <!-- <span>5.2k</span> -->
@@ -256,7 +255,7 @@
                 var html = "";
                 var count = 1;
                 $.each(res.data.songs, function(i, nhac){
-                    if (nhac.id != getUrlParameter('id')) {
+                    if (nhac.id != getUrlParameter('id') && nhac.status) {
                         html += '<li class="list-group-item" style="border:none !important; border-bottom:1px solid rgb(0,0,0,.125) !important">';
                         html += '<span style="margin:15px;">'+count+'</span>';
                         html += '<span><a href="nhac.html?id='+nhac.id+'">'+nhac.name+' - </a></span>';
@@ -268,7 +267,7 @@
                 $('#listnhackhac').html(html);
             });
 
-            if(result.data.creator.id == sessionStorage.getItem('user_id')) {
+            if(result.data.creator.id == sessionStorage.getItem('user_id') || !result.data.status) {
                 $("#btnSongPrice").attr("disabled", 'disabled');
             }
 
@@ -310,22 +309,14 @@
                         console.log(details);
                         //goi api luu Transaction vao db
                         //...
-                        api_themTransactionThanhToanThanhCong(result.data.id, sessionStorage.getItem("user_id")).done(function(result){
-                            if (result.data == null) {
+                        api_themTransactionThanhToanThanhCong(getUrlParameter('id'), sessionStorage.getItem("user_id")).done(function(result){
+                            if (!result.status) {
                                 toastr.error(result.message);
                             }else{
-                                toastr.success(result.message);
+                                if(!alert(result.message)) { window.location.assign('user.html'); }
                             }
                         });
-                        api_updateNhacDaThanhToan(result.data.id).done(
-                            function(result){
-                                if (result.data == null) {
-                                    toastr.error(result.message);
-                                }else{
-                                    toastr.success(result.message);
-                                }
-                            })
-                        });
+                    })
                 }
             }).render('#paypal-button-container');
         })

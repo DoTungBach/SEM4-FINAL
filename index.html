@@ -683,26 +683,26 @@
     <script type="text/javascript" src="js/file_hander.js"></script>
     <script type="text/javascript">
 
-        api_top20User().done(function(result){
-            var html = '';
-            $.each(result.data,function(i,tacgia){
-                html += '<div class="single-album">';
-                html += '   <img src="img/bg-img/a1.jpg" alt="">';
-                html += '   <div class="album-info">';
-                html += '       <a href="#">';
-                html += '           <h5>Tên nghệ sĩ</h5>';
-                html += '       </a>';
-                html += '   </div>';
-                html += '</div>';
-            })
-        })
+        // api_top20User().done(function(result){
+        //     var html = '';
+        //     $.each(result.data,function(i,tacgia){
+        //         html += '<div class="single-album">';
+        //         html += '   <img src="img/bg-img/a1.jpg" alt="">';
+        //         html += '   <div class="album-info">';
+        //         html += '       <a href="#">';
+        //         html += '           <h5>Tên nghệ sĩ</h5>';
+        //         html += '       </a>';
+        //         html += '   </div>';
+        //         html += '</div>';
+        //     })
+        // })
 
         // <button type="button" id="btnSongPrice" onclick="checkUserAcc()" class="btn btn-info btn-lg"><i class="fas fa-shopping-cart"></i>&ensp; <span id="songPrice"></span></button>
 
         api_topBeat().done(function(result){
             var html = '';
             $.each(result.data, function(i,nhac){
-                if(i<6) {
+                if(nhac.status) {
                     html += '<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">';
                     html += '   <div class="first-part d-flex align-items-center">';
                     html += '       <div class="thumbnail">';
@@ -723,7 +723,7 @@
             $('#top_nhac_moi').html(html);
 
             $.each(result.data, function(i,nhac){
-                if(i<6) {
+                if(nhac.status) {
                     new APlayer({
                         container: document.getElementById('aplayer_top_' + nhac.id),
                         mini: true,

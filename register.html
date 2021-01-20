@@ -301,7 +301,7 @@
     			if (result.data == null) {
     				toastr.error(result.message);
     			}else{
-    				toastr.success(result.message + ' Vui lòng vào email để xác nhận.');
+    				if(!alert(result.message + ' Vui lòng vào email để xác nhận.')) { window.location.assign('index.html'); }
     				// window.location.assign('index.html');
     			}
     		})
